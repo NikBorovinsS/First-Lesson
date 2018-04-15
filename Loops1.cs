@@ -1,4 +1,7 @@
-﻿using System;
+//Author: Borovinskiy Nikita
+//Вывести на экран таблицу умножения на N от 1 до 20 где N число введенное пользователем
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
