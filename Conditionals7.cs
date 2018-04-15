@@ -1,3 +1,7 @@
+//Author
+//Дано натуральное число. Выяснить, является ли оно простым, т.е. делится только на 1 и на
+//само себя.
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
