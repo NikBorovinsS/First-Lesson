@@ -1,4 +1,9 @@
-﻿using System;
+//Author: Borovinskiy Nikita
+//Сделать программу перевода валют. Вводится сумма, потом выбирается вид валюты – гривны
+//или доллары или евро, программа переводит в две другие валюты. Текущий курс валюты
+//считать известным.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
