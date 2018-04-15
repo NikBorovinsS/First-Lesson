@@ -1,4 +1,7 @@
-﻿using System;
+//Author: Borovinskiy Nikita
+//Пользователь вводит число вывесли на экран количество разрядов в этом числе
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
