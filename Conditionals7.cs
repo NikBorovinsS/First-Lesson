@@ -1,5 +1,3 @@
-//Выполнил: Боровинский Никита
-//Напишите консольное приложение которое выводит на экран Ваши ФИО в указанном формате
 using System;
 using System.Collections.Generic;
 using System.Linq;
