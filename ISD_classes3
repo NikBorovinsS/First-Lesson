@@ -1,0 +1,86 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ISD_classes_number3
+{
+    class Book
+    {
+       public Title title { get; set; }
+       public Author author { get; set; }
+       public Content content { get; set; }
+        public Book()
+        {
+            title = new Title();
+            author = new Author();
+            content = new Content();
+        }
+        public Book(Title t, Author a, Content c)
+        {
+            title = t;
+            author = a;
+            content = c;
+        }
+        public void Show()
+        {
+            title.Show();
+            author.Show();
+            content.Show();
+        }
+       
+    }
+
+    class Title
+    {
+        public string name;
+        public void Show()
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("Название книги: {0} ", name);
+        }
+    }
+
+
+    class Author
+    {
+        public string surname;
+        
+        public void Show()
+
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Автор книги: {0}", surname);
+        }
+    }
+
+    class Content
+    {
+        public string cont;
+
+        public void Show()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Содержание: {0}", cont);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Book b = new Book();
+            Console.WriteLine("Введите название книги: ");
+            b.title.name = Console.ReadLine();
+            Console.WriteLine("Введите фамилию автора: ");
+            b.author.surname = Console.ReadLine();
+            Console.WriteLine("Введите краткое описание книги: ");
+            b.content.cont = Console.ReadLine();
+            Console.WriteLine("\n\n************************\n\n");
+            b.Show();
+            Console.ReadLine();
+                
+         }
+    }
+}

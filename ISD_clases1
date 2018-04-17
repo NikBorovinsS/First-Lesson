@@ -1,0 +1,40 @@
+ausing System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ISD_Classes_number1
+{ 
+     class Address
+    {
+        private int index;
+        private string country;
+        private string city;
+        private string street;
+        private int house;
+        private int appartament;
+        public int Index { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public int House { get; set; }
+        public int Appartament { get; set; }
+
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Address my_address = new ISD_Classes_number1.Address();
+            my_address.Index = 49101;
+            my_address.Country = "Ukraine";
+            my_address.City = "Dnipro";
+            my_address.Street = "Kirova";
+            my_address.House = 42;
+            my_address.Appartament = 282;
+            Console.WriteLine("Address:\n\n*******************************\n\nIndex: {0}\nCountry: {1}\nCity: {2}\nStreet: {3}\nHouse: {4}\nAppartament: {5}\n*********************************", my_address.Index, my_address.Country, my_address.City, my_address.Street, my_address.House, my_address.Appartament);
+            Console.ReadKey();
+        }
+    }
+}

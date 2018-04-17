@@ -1,0 +1,69 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ISD_classes_number_2
+{
+        class Rectangle
+        {
+            private double side1;
+            private double side2;
+            private double perimiter;
+            private double area;
+            double Area
+            {
+                get
+                {
+                    return area;
+                }
+            }
+            double Perimiter
+            {
+                get
+                {
+                    return perimiter;
+                }
+            }
+            public Rectangle(double side1, double side2)
+            {
+                this.side1 = side1;
+                this.side2 = side2;
+            }
+            public double AreaCalculator()
+            {
+                area = side1 * side2;
+                return Area;
+            }
+            public double PerimeterCalculator()
+            {
+                perimiter = (side1 + side2) * 2;
+                return Perimiter;
+            }
+        }
+    
+
+
+    class Program
+    {
+        public static double side1;
+        public static double side2;
+        public static double perimiter;
+        public static double area;
+        static void Main(string[] args)
+        {
+            Console.WriteLine("\n\n***************\n\nЭта программа считает площадь и периметр прямоугольника, по заданным значениям.\n\n***************\n ");
+            Console.WriteLine("Введите длину прямоугольника:\n\n***********************\n\n ");
+            side1 = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("\n**************\n\nВведите ширину прямоугольника:\n\n************\n\n ");
+            side2 = Convert.ToDouble(Console.ReadLine());
+            Rectangle rect = new ISD_classes_number_2.Rectangle(side1, side2);
+            perimiter = rect.PerimeterCalculator();
+            area = rect.AreaCalculator();
+            Console.WriteLine("\n***********\n\nПериметр вашего прямоугольника: {0}\n\n****************************\n\n",perimiter );
+            Console.WriteLine("Площадь вашего прямоугольника: {0}\n\n****************************\n\n", area);
+            Console.ReadKey();
+        }
+    }
+}
