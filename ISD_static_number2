@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ISD_static_number2
+{
+    static class SortArray
+    {
+        public static void SortArr(this int[] arr)
+        {
+            int temp;
+            for (int j = 0; j < arr.Length; j++)
+            {
+                for (int i = 0; i < arr.Length - 1; i++)
+                {
+                    if (arr[i] > arr[i + 1])
+                    {
+                        temp = arr[i];
+                        arr[i] = arr[i + 1];
+                        arr[i + 1] = temp;
+
+                    }
+
+                }
+            }
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int k;
+            Console.WriteLine("Эта программа сортирует массив по возрастанию.\n\n************************************\n\n");
+            Console.WriteLine("Введите количество элементов в массиве:");
+            k = Convert.ToInt32(Console.ReadLine());
+            int[] array = new int[k];
+            Console.WriteLine("Введите массив: ");
+            for (int i = 0; i < k; i++)
+            {
+                array[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            array.SortArr();
+            Console.WriteLine("Результат сортировки: ");
+            for(int i =0; i< array.Length; i++)
+            {
+                Console.Write(array[i] + "  ");
+            }
+            Console.ReadKey();
+        }
+    }
+}
