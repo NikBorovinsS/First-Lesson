@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ISD_structures_1
+{
+    class Program
+    {
+        struct Notebook
+        {
+            string model;
+            string production;
+            double price;
+            public Notebook(string m, string p, double pr)
+            {
+                model = m;
+                production = p;
+                price = pr;
+            }
+
+            public void Print()
+            {
+                Console.WriteLine("Модель: {0}\nПроизводитель: {1}\nЦена: {2}\n", model, production, price);
+            }
+        }
+        static char b;
+        static void Main(string[] args)
+        {
+            try
+            { 
+            do
+            
+            {
+                Console.WriteLine("Введите название модели: ");
+                string s = Console.ReadLine();
+                Console.WriteLine("Введите производителя: ");
+                string p = Console.ReadLine();
+                Console.WriteLine("Введите цену: ");
+                int pr = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
+                Notebook note = new ISD_structures_1.Program.Notebook(s, p, pr);
+                note.Print();
+                Console.WriteLine("Хотите ввести еще одну модель? ");
+                b = Convert.ToChar(Console.ReadLine());
+            } while (b == 'y');
+        }catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            Console.ReadKey();
+
+        }
+    }
+}

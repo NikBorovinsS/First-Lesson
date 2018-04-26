@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+/*
+ Создайте статический класс с методом void Print (string stroka, int color), который выводит на экран
+строку заданным цветом. Используя перечисление, создайте набор цветов, доступных пользователю. Ввод
+строки и выбор цвета предоставьте пользователю.
+*/
+namespace ISD_structres_5
+{
+    enum Colors
+    {
+        Yellow = 0,
+        Green = 1,
+        White = 2,
+        Cyan = 3,
+        Blue = 4,
+        DarkBlue = 5,
+        DarkRed = 6,
+        Red = 7,
+        Magenta = 8,
+        Gray = 9     
+    }
+
+    static class MyClass
+    {
+      public static void Print(string stroka, int color)
+        {
+            for(int i = (int)Colors.Yellow ; i < (int)Colors.Gray; i++)
+            {
+                if(color == i)
+                {
+                   foreach(var v in Enum.GetValues(typeof(ConsoleColor)))
+                    {
+                        if(v.ToString() == ((Colors)i).ToString())
+                        {
+                            Console.ForegroundColor = (ConsoleColor)v;
+                            
+                        }
+                    }
+                }
+            }
+
+           
+            Console.WriteLine(stroka);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите строку: ");
+            string s = Console.ReadLine();
+            for (int i = (int)Colors.Yellow; i < (int)Colors.Gray; i++)
+            {
+                Console.WriteLine((Colors)i+" - " + i);
+            }
+            Console.WriteLine();
+            Console.WriteLine("Выберите цвет и введите соответствующую цифру: ");
+            int c = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+            MyClass.Print(s,c);
+            Console.ReadLine();
+        }
+    }
+}
