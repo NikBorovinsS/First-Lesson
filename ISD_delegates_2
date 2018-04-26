@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+/*
+ Создайте четыре лямбда оператора для выполнения арифметических действий: (Add – сложение, Sub –
+вычитание, Mul – умножение, Div – деление). Каждый лямбда оператор должен принимать два аргумента и
+возвращать результат вычисления. Лямбда оператор деления должен делать проверку деления на ноль.
+Написать программу, которая будет выполнять арифметические действия указанные пользователем.
+*/
+namespace ISD_delegate_2
+{
+    public delegate double MyDelegat(double a, double b);
+    class Program
+    {
+       static string b;
+        static void Main(string[] args)
+        {
+            do
+            {
+                Console.WriteLine("\n\nВыберите действие: +, -, *, /");
+                string s = Console.ReadLine();
+                Console.WriteLine("Первое число: ");
+                double first = Convert.ToDouble(Console.ReadLine());
+
+                Console.WriteLine("Второе число: ");
+                double second = Convert.ToDouble(Console.ReadLine());
+
+                switch (s)
+                {
+                    case "+":
+                        MyDelegat myDelegat = (c, b) => c + b;
+                        double del = myDelegat(first, second);
+                        Console.WriteLine("Ответ:{0}", del); break;
+
+                    case "-":
+                        MyDelegat myDelegat1 = (c, b) => c - b;
+                        double del1 = myDelegat1(first, second);
+                        Console.WriteLine("Ответ:{0}", del1); break;
+                    case "*":
+                        MyDelegat myDelegat2 = (c, b) => c * b;
+                        double del2 = myDelegat2(first, second);
+                        Console.WriteLine("Ответ:{0}", del2); break;
+                    case "/":
+                        MyDelegat myDelegat3 = (c, b) => b != 0 ? c / b : '∅';
+                        double del3 = myDelegat3(first, second);
+                        Console.WriteLine("Ответ:{0}", del3); break;
+
+                }
+                Console.WriteLine("\n\nХотите повторить?y/n");
+                b = Console.ReadLine();
+            }
+            while (b=="y");
+            Console.ReadKey();
+
+        }
+    }
+}
