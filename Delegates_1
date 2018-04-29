@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Delegates_1
+{
+    class Delegates_1
+    {
+        delegate float Mean(int arg1, int arg2, int arg3);
+        static void Main(string[] args)
+        {
+            Mean mean = delegate (int arg1, int arg2, int arg3)
+            {
+
+                return (float)(arg1 + arg2 + arg3) / 3;
+            };
+            Console.WriteLine("Введите 3 целых числа: ");
+            try
+            {
+                int input1 = Convert.ToInt32(Console.ReadLine());
+                int input2 = Convert.ToInt32(Console.ReadLine());
+                int input3 = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("\nСреднее арифметическое: " + mean(input1, input2, input3));
+            }
+            catch (Exception exp) { Console.WriteLine(exp.Message); }
+            Console.ReadKey();
+        }
+    }
+}
