@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+/*
+ 
+     Создайте класс MyDictionary<TKey,TValue>. Реализуйте в простейшем приближении возможность
+использования его экземпляра Минимально требуемый интерфейс взаимодействия с экземпляром, должен
+включать метод добавления пар элементов, индексатор для получения значения элемента по указанному
+индексу и свойство только для чтения для получения общего количества
+*/
+namespace ISD_generics3
+{
+    class MyDictionary<Tkey, Tval>
+    {
+        private int counter = 0;
+        private Tkey[] keysArray = null;
+        private Tval[] valsArray = null;
+
+        public int Counter
+        {
+            get { return this.counter; }
+        }
+
+        public void Add(Tkey key, Tval val)
+        {
+            this.counter++;
+
+            Array.Resize(ref keysArray, counter);
+            keysArray[counter - 1] = key;
+
+            Array.Resize(ref valsArray, counter);
+            valsArray[counter - 1] = val;
+        }
+
+        public Tval this[Tkey key]
+        {
+            get
+            {
+                int ind = 0;
+                for (int i = 0; i < keysArray.Length; i++)
+                {
+                    if (key.Equals(keysArray[i]))
+                        ind = i;
+                }
+                return valsArray[ind];
+            }
+        }
+    }
+}
+
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+        }
+    }
+}
