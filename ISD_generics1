@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ISD_generics_1
+{
+    public class MyFactory<T> where T : new()
+    {
+        public static T FacrotyMethod()
+        {
+            Console.WriteLine("Объект создан.");
+            return new T();
+        }
+    }
+
+    public class MyClass
+    {
+        public int Val { get; set; }
+        public MyClass() { }
+        public MyClass(int i)
+        {
+            Val = i;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            MyClass obj = MyFactory<MyClass>.FacrotyMethod();
+            int iobj = MyFactory<int>.FacrotyMethod();
+
+            Console.ReadKey();
+        }
+    }
+}
