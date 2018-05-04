@@ -1,0 +1,171 @@
+using System;
+using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+/*
+ Задание 2
+Создайте коллекцию MyList<T>. Реализуйте в простейшем приближении возможность использования ее
+экземпляра аналогично экземпляру класса List<T>. Минимально требуемый интерфейс взаимодействия с
+экземпляром, должен включать метод добавления элемента, индексатор для получения значения элемента по
+указанному индексу и свойство только для чтения для получения общего количества элементов. Реализуйте
+возможность перебора элементов коллекции в цикле foreach.
+Задание 3
+Создайте
+     */
+namespace ISD_collections_2
+{
+    public class MyList<T> :IEnumerable<T>
+    {
+        private int counter = 0;
+        private T[] buffer;
+
+        public int Counter
+        {
+            get { return this.counter; }
+        }
+
+        public MyList()
+        {
+            this.buffer = new T[counter];
+        }
+
+
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return ((IEnumerable<T>)buffer).GetEnumerator();
+        }
+
+        public T this[int i]
+        {
+            get
+            {
+                if (i < 0 || i >= Counter)
+                    throw new IndexOutOfRangeException();
+                return buffer[i];
+            }
+
+            set
+            {
+                if (i < 0 || i >= Counter)
+                    throw new IndexOutOfRangeException();
+                buffer[i] = value;
+            }
+        }
+
+       
+
+        public void Add(T value)
+        {
+            counter++;
+
+            Array.Resize(ref buffer, counter);
+            buffer[counter-1] = value;
+            
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable<T>)buffer).GetEnumerator();
+        }
+        public void AddRange(IEnumerable<T> value)
+        {
+            foreach (T t in value)
+            {
+                this.Add(t);
+            }
+        }
+      
+        public int IndexOf(T item)
+        {
+            return  Array.IndexOf(buffer,item);
+        }
+
+        public void Insert(int index, T item)
+        {
+            for(int i=0;i<Counter; i++)
+            {
+                if(index == i)
+                {
+                    
+                    buffer[i] = item;
+
+                }
+            }
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            MyList<int> list = new MyList<int>() {1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            Console.WriteLine("**************************  Было  **************************");
+            foreach (int i in list)
+            {
+                Console.Write(i + " ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("***************************************************************");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Введите число, которое хотите добавить в этот лист");
+            int a = Convert.ToInt32(Console.ReadLine());
+            list.Add(a);
+            Console.WriteLine();
+            Console.WriteLine("***************************************************************");
+            Console.WriteLine();
+            Console.WriteLine("**************************  Стало  **************************");
+            foreach (int i in list)
+            {
+                Console.Write(i + " ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("***************************************************************");
+            Console.WriteLine();
+            Console.WriteLine("Длина листа: {0}", list.Counter);
+            Console.WriteLine();
+            Console.WriteLine("***************************************************************");
+            Console.WriteLine();
+            Console.WriteLine("Выведу первый элемент: {0}", list[0]);
+            Console.WriteLine();
+            Console.WriteLine("***************************************************************");
+            Console.WriteLine();
+            Console.WriteLine();
+            MyList<int> list2 = new MyList<int>() { 11, 12, 13, 14 };
+            Console.WriteLine("Добавим к нашему листу еще вот такой лист: ");
+            Console.WriteLine();
+            foreach (int i in list2)
+            {
+                Console.Write(i + " ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("***************************************************************");
+            Console.WriteLine();
+            Console.WriteLine("**************************  Стало  **************************");
+            list.AddRange(list2);
+            foreach (int i in list)
+            {
+                Console.Write(i + " ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("***************************************************************");
+            Console.WriteLine();
+            Console.WriteLine("Найдем индекс элемента номер 5: {0}", list.IndexOf(5));
+            Console.WriteLine();
+            Console.WriteLine("***************************************************************");
+            Console.WriteLine();
+            Console.WriteLine("Вставим на место шестого элемента число 100.");
+            Console.WriteLine();
+
+            Console.WriteLine("***************************************************************");
+            Console.WriteLine();
+            list.Insert(5,100);
+            foreach (int i in list)
+            {
+                Console.Write(i + " ");
+            }
+            Console.ReadKey();
+        }
+    }
+}
