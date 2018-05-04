@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+/*
+ Задание 2
+Создайте файл, запишите в него произвольные данные и закройте файл. Затем снова откройте этот
+файл, прочитайте из него данные и выведете их на консоль.
+     */
+namespace ISD_IO_2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string txt = "";
+            Console.WriteLine("Хотите ввести свой текст, если да нажмите букву - д, если хотите использовать стандартный нажмите любой другой символ.");
+            string symbol = Console.ReadLine();
+            if (symbol == "д")
+            {
+                Console.WriteLine("Введите текст, который хотите записать в файл: ");
+                txt = Console.ReadLine();
+            }
+            else
+            {
+                txt = "Профессорская дача на берегу Финского залива. В отсутствие хозяина, друга моего отца, нашей семье позволялось там жить. Даже спустя десятилетия помню, как после утомительной дороги из города меня обволакивала прохлада деревянного дома, как собирала растрясшееся, распавшееся в экипаже тело. Эта прохлада не была связана со свежестью, скорее, как ни странно, — с упоительной затхлостью, в которой слились ароматы старых книг и многочисленных океанских трофеев, непонятно как доставшихся профессору-юристу. Распространяя солоноватый запах, на полках лежали засушенные морские звёзды, перламутровые раковины, резные маски, пробковый шлем и даже игла рыбы-иглы.";
+            }
+            FileInfo file = new FileInfo("NewFile.txt");
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(file.Name.ToString(), false, System.Text.Encoding.UTF8))
+                {
+                    sw.WriteLine(txt);
+                }
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            try
+            {
+                Console.WriteLine("****** Считаем текст из файла: ********");
+                using (StreamReader sr = new StreamReader(file.Name.ToString()))
+                {
+                    Console.WriteLine(sr.ReadToEnd());
+                }
+
+                Console.WriteLine();
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            Console.ReadKey();
+        }
+    }
+}
